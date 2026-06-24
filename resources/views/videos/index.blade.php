@@ -1,13 +1,16 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Videos | FSA Productions</title>
-        @fonts
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="antialiased">
-        <div id="app" data-page="videos"></div>
-    </body>
-</html>
+<x-site-layout title="Videos | FSA Productions">
+    @php
+        $videos = ['Brand films', 'Promo edits', 'Behind-the-scenes coverage', 'Social-first content'];
+    @endphp
+
+    <h2 class="text-4xl font-semibold">Videos</h2>
+    <p class="mt-4 max-w-3xl text-white/75">Sample content categories available for production and delivery.</p>
+
+    <ul class="mt-8 grid gap-4 sm:grid-cols-2">
+        @foreach ($videos as $video)
+            <li class="rounded-2xl border border-white/10 bg-white/6 px-5 py-4 text-white/85">
+                {{ $video }}
+            </li>
+        @endforeach
+    </ul>
+</x-site-layout>

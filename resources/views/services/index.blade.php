@@ -1,13 +1,31 @@
-<!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-    <head>
-        <meta charset="utf-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1">
-        <title>Services | FSA Productions</title>
-        @fonts
-        @vite(['resources/css/app.css', 'resources/js/app.js'])
-    </head>
-    <body class="antialiased">
-        <div id="app" data-page="services"></div>
-    </body>
-</html>
+<x-site-layout title="Services | FSA Productions">
+    @php
+        $services = [
+            [
+                'title' => 'Production planning',
+                'description' => 'Structured pre-production, creative direction, and delivery planning for polished output.',
+            ],
+            [
+                'title' => 'Video production',
+                'description' => 'Branded clips, interviews, social content, and event coverage tailored to your story.',
+            ],
+            [
+                'title' => 'Post-production',
+                'description' => 'Editing, motion graphics, color, and sound work that makes the final cut feel complete.',
+            ],
+        ];
+    @endphp
+
+    <h2 class="text-4xl font-semibold">Services</h2>
+    <p class="mt-4 max-w-3xl text-white/75">FSA Productions offers production planning, video production, and post-production services.</p>
+
+    <section class="mt-8 grid gap-4 md:grid-cols-3">
+        @foreach ($services as $service)
+            <article class="rounded-3xl border border-white/10 bg-white/6 p-6 backdrop-blur-sm">
+                <p class="text-sm uppercase tracking-[0.3em] text-[#ffcc66]">Service</p>
+                <h3 class="mt-4 text-2xl font-semibold">{{ $service['title'] }}</h3>
+                <p class="mt-3 leading-7 text-white/70">{{ $service['description'] }}</p>
+            </article>
+        @endforeach
+    </section>
+</x-site-layout>
