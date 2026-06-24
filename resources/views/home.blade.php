@@ -1,8 +1,4 @@
 <x-site-layout title="FSA Productions">
-    @php
-        $videos = ['Brand films', 'Promo edits', 'Behind-the-scenes coverage', 'Social-first content'];
-    @endphp
-
     <section class="grid gap-10 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
         <div class="space-y-6">
             <span class="inline-flex rounded-full border border-[#ffcc66]/30 bg-[#ffcc66]/10 px-4 py-1 text-xs font-semibold uppercase tracking-[0.35em] text-[#ffcc66]">
@@ -34,10 +30,10 @@
             </div>
 
             <div class="mt-4 rounded-2xl border border-white/10 bg-gradient-to-br from-white/10 to-white/5 p-5">
-                <p class="text-sm font-medium uppercase tracking-[0.28em] text-[#ffcc66]">What we make</p>
+                <p class="text-sm font-medium uppercase tracking-[0.28em] text-[#ffcc66]">What we do</p>
                 <ul class="mt-4 grid gap-3 text-sm text-white/80 sm:grid-cols-2">
-                    @foreach ($videos as $video)
-                        <li class="rounded-full border border-white/10 bg-black/20 px-4 py-3">{{ $video }}</li>
+                    @foreach ($products as $product)
+                        <li class="rounded-full border border-white/10 bg-black/20 px-4 py-3">{{ $product }}</li>
                     @endforeach
                 </ul>
             </div>

@@ -1,21 +1,4 @@
 <x-site-layout title="Services | FSA Productions">
-    @php
-        $services = [
-            [
-                'title' => 'Production planning',
-                'description' => 'Structured pre-production, creative direction, and delivery planning for polished output.',
-            ],
-            [
-                'title' => 'Video production',
-                'description' => 'Branded clips, interviews, social content, and event coverage tailored to your story.',
-            ],
-            [
-                'title' => 'Post-production',
-                'description' => 'Editing, motion graphics, color, and sound work that makes the final cut feel complete.',
-            ],
-        ];
-    @endphp
-
     <h2 class="text-4xl font-semibold">Services</h2>
     <p class="mt-4 max-w-3xl text-white/75">FSA Productions offers production planning, video production, and post-production services.</p>
 

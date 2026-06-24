@@ -8,6 +8,15 @@ class VideosController extends Controller
 {
     public function __invoke(): View
     {
-        return view('videos.index');
+        $videos = [
+            'Brand films',
+            'Promo edits',
+            'Behind-the-scenes coverage',
+            'Social-first content',
+        ];
+
+        return view('videos.index', [
+            'videos' => $videos,
+        ]);
     }
 }

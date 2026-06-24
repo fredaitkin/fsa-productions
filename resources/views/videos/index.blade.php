@@ -1,8 +1,4 @@
 <x-site-layout title="Videos | FSA Productions">
-    @php
-        $videos = ['Brand films', 'Promo edits', 'Behind-the-scenes coverage', 'Social-first content'];
-    @endphp
-
     <h2 class="text-4xl font-semibold">Videos</h2>
     <p class="mt-4 max-w-3xl text-white/75">Sample content categories available for production and delivery.</p>
 
