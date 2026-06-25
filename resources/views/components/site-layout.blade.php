@@ -38,6 +38,21 @@
                         <a href="{{ route('videos.index') }}" class="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white/90 transition hover:border-[#ffcc66]/60 hover:bg-white/10">
                             Videos
                         </a>
+
+                        @guest
+                            <a href="{{ route('login') }}" class="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white/90 transition hover:border-[#ffcc66]/60 hover:bg-white/10">
+                                Login
+                            </a>
+                        @endguest
+
+                        @auth
+                            <form action="{{ route('logout') }}" method="POST" class="inline-flex">
+                                @csrf
+                                <button type="submit" class="inline-flex items-center rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-medium text-white/90 transition hover:border-[#ffcc66]/60 hover:bg-white/10">
+                                    Logout
+                                </button>
+                            </form>
+                        @endauth
                     </nav>
                 </header>
 

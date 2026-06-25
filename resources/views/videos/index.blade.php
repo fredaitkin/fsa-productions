@@ -1,9 +1,11 @@
 <x-site-layout title="Videos | FSA Productions">
     <h2 class="text-4xl font-semibold">Videos</h2>
     <p class="mt-4 max-w-3xl text-white/75">Library of sample videos.</p>
-    <a href="{{ route('videos.create') }}" class="mt-6 inline-flex rounded-full bg-[#ffcc66] px-5 py-2 font-semibold text-[#08111f] transition hover:bg-[#ffd98a]">
-        Add Video
-    </a>
+    @if ($canManageVideos)
+        <a href="{{ route('videos.create') }}" class="mt-6 inline-flex rounded-full bg-[#ffcc66] px-5 py-2 font-semibold text-[#08111f] transition hover:bg-[#ffd98a]">
+            Add Video
+        </a>
+    @endif
 
     @if (session('status'))
         <p class="mt-4 rounded-xl border border-[#ffcc66]/40 bg-[#ffcc66]/15 px-4 py-3 text-sm text-[#ffdfa0]">
