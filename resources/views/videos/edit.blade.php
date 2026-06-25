@@ -1,6 +1,6 @@
-<x-site-layout title="Add Video | FSA Productions">
-    <h2 class="text-4xl font-semibold">Add Video</h2>
-    <p class="mt-4 max-w-3xl text-white/75">Create a new video entry for the library.</p>
+<x-site-layout title="Edit Video | FSA Productions">
+    <h2 class="text-4xl font-semibold">Edit Video</h2>
+    <p class="mt-4 max-w-3xl text-white/75">Update an existing video entry.</p>
 
     @if ($errors->any())
         <div class="mt-6 rounded-2xl border border-red-300/40 bg-red-500/15 p-4 text-sm text-red-100">
@@ -13,8 +13,9 @@
         </div>
     @endif
 
-    <form action="{{ route('videos.store') }}" method="POST" class="mt-8 space-y-5 rounded-2xl border border-white/10 bg-white/6 p-6">
+    <form action="{{ route('videos.update', $video->id) }}" method="POST" class="mt-8 space-y-5 rounded-2xl border border-white/10 bg-white/6 p-6">
         @csrf
-        @include('videos._form', ['buttonLabel' => 'Save Video'])
+        @method('PATCH')
+        @include('videos._form', ['buttonLabel' => 'Update Video'])
     </form>
 </x-site-layout>

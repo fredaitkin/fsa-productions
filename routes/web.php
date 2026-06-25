@@ -18,6 +18,12 @@ Route::get('/videos/create', [VideosController::class, 'create'])
 Route::post('/videos', [VideosController::class, 'store'])
     ->middleware('auth')
     ->name('videos.store');
+Route::get('/videos/{video}/edit', [VideosController::class, 'edit'])
+    ->middleware('auth')
+    ->name('videos.edit');
+Route::patch('/videos/{video}', [VideosController::class, 'update'])
+    ->middleware('auth')
+    ->name('videos.update');
 
 Route::get('/login', [LoginController::class, 'create'])
     ->middleware('guest')

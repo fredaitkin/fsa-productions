@@ -18,14 +18,22 @@
             <li class="rounded-2xl border border-white/10 bg-white/6 p-4 text-white/85">
                 <details class="mt-3">
                     <summary class="list-none">
-                        <p class="inline-flex cursor-pointer items-center gap-2 text-lg font-semibold text-white">
-                            {{ $video->title }}
-                            <span class="text-white/70" aria-hidden="true">
-                                <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                                    <path d="M7 5L14 10L7 15V5Z" />
-                                </svg>
-                            </span>
-                        </p>
+                        <div class="flex items-center justify-between gap-4">
+                            <p class="inline-flex cursor-pointer items-center gap-2 text-lg font-semibold text-white">
+                                {{ $video->title }}
+                                <span class="text-white/70" aria-hidden="true">
+                                    <svg class="h-4 w-4" viewBox="0 0 20 20" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                                        <path d="M7 5L14 10L7 15V5Z" />
+                                    </svg>
+                                </span>
+                            </p>
+
+                            @if ($canManageVideos)
+                                <a href="{{ route('videos.edit', $video->id) }}" class="rounded-full border border-white/15 bg-white/5 px-4 py-2 text-xs font-semibold uppercase tracking-[0.2em] text-white/80 transition hover:border-[#ffcc66]/60 hover:bg-white/10">
+                                    Edit
+                                </a>
+                            @endif
+                        </div>
                     </summary>
                     @if ($video->description)
                         <p class="mt-2 text-sm text-white/70">{{ $video->description }}</p>

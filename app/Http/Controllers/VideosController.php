@@ -14,7 +14,7 @@ class VideosController extends Controller
     public function index(): View
     {
         $videos = DB::table('videos')
-            ->select(['code', 'title', 'description'])
+            ->select(['id', 'code', 'title', 'description'])
             ->orderByDesc('id')
             ->get();
 
@@ -29,6 +29,22 @@ class VideosController extends Controller
         $this->authorizeSiteAdministrator();
 
         return view('videos.create');
+    }
+
+    public function edit(int $videoId): View
+    {
+        $this->authorizeSiteAdministrator();
+
+        $video = DB::table('videos')
+            ->select(['id', 'code', 'title', 'description'])
+            ->where('id', $videoId)
+            ->first();
+
+        abort_if($video === null, Response::HTTP_NOT_FOUND);
+
+        return view('videos.edit', [
+            'video' => $video,
+        ]);
     }
 
     public function store(Request $request): RedirectResponse
@@ -52,6 +68,36 @@ class VideosController extends Controller
         return redirect()
             ->route('videos.index')
             ->with('status', 'Video added successfully.');
+    }
+
+    public function update(Request $request, int $videoId): RedirectResponse
+    {
+        $this->authorizeSiteAdministrator();
+
+        $videoExists = DB::table('videos')
+            ->where('id', $videoId)
+            ->exists();
+
+        abort_if(! $videoExists, Response::HTTP_NOT_FOUND);
+
+        $validated = $request->validate([
+            'code' => ['required', 'string', 'max:20', 'regex:/^[A-Za-z0-9_-]+$/'],
+            'title' => ['required', 'string', 'max:100'],
+            'description' => ['nullable', 'string'],
+        ]);
+
+        DB::table('videos')
+            ->where('id', $videoId)
+            ->update([
+                'code' => $validated['code'],
+                'title' => $validated['title'],
+                'description' => $validated['description'] ?? null,
+                'updated_at' => now(),
+            ]);
+
+        return redirect()
+            ->route('videos.index')
+            ->with('status', 'Video updated successfully.');
     }
 
     private function authorizeSiteAdministrator(): void
