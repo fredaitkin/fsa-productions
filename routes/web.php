@@ -10,4 +10,6 @@ Route::get('/', HomeController::class)->name('home');
 
 Route::get('/services', ServicesController::class)->name('services.index');
 Route::get('/github', GitHubController::class)->name('github.index');
-Route::get('/videos', VideosController::class)->name('videos.index');
+Route::get('/videos', [VideosController::class, 'index'])->name('videos.index');
+Route::get('/videos/create', [VideosController::class, 'create'])->name('videos.create');
+Route::post('/videos', [VideosController::class, 'store'])->name('videos.store');
